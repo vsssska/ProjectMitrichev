@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.5)
 
 # Название проекта
-project(fullstack-test-proj)
+project(BankApplication)
 
 # Указываем стандарт C++
 set(CMAKE_CXX_STANDARD 17)

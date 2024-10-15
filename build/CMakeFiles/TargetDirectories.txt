@@ -1,0 +1,3 @@
+/app/ProjectMitrichev/build/CMakeFiles/BankApp.dir
+/app/ProjectMitrichev/build/CMakeFiles/edit_cache.dir
+/app/ProjectMitrichev/build/CMakeFiles/rebuild_cache.dir
