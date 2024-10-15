@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bank Account</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        input, button {
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Bank Account</h1>
+    <div>
+        <strong>Current Balance: </strong><span id="balance">Loading...</span>
+    </div>
+    <div>
+        <input type="number" id="amount" placeholder="Enter amount" min="1" />
+    </div>
+    <div>
+        <button onclick="deposit()">Deposit</button>
+        <button onclick="withdraw()">Withdraw</button>
+    </div>
+    <div id="result"></div>
+
+</body>
+</html>
+
