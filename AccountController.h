@@ -4,6 +4,7 @@
 #include "BankAccount.h"
 #include <drogon/HttpController.h>
 #include <thread>
+#include <sstream>
 
 const static double STD_INIT_AMOUNT = 1000.0;
 
