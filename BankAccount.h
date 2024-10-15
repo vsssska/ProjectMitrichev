@@ -19,7 +19,8 @@ class BankAccount {
 		void waitForFunds(double amount);
 
 		double getBalance() const;
-		std::mutex& getMutex() const;
+	//	std::mutex& getMutex() const;
+		
 };
 
 #endif

@@ -25,10 +25,10 @@ double BankAccount::getBalance() const  {
 	return balance;
 }
 
-std::mutex& BankAccount::getMutex() const {
+/*std::mutex& BankAccount::getMutex() const {
 	return mtx;
 
-}
+}*/
 
 void BankAccount::waitForFunds(double amount) {
 	std::unique_lock<std::mutex> lock{mtx};
