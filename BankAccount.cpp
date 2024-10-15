@@ -26,3 +26,10 @@ double BankAccount::getBalance() const  {
 	return balance;
 }
 
+
+void BankAccount::waitForFunds(double amount) {
+	std::unique_lock<std::mutex> lock{mtx};
+	cv.wait(lock, [this, amount]() { return balance >= amount; });
+}
+
+
