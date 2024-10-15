@@ -18,7 +18,6 @@ class BankAccount {
 		void withdraw(double amount);
 
 		double getBalance() const;
-		
 };
 
 #endif
