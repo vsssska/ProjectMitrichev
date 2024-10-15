@@ -20,7 +20,7 @@
         <strong>Current Balance: </strong><span id="balance">Loading...</span>
     </div>
     <div>
-        <input type="number" id="amount" placeholder="Enter amount" />
+        <input type="number" id="amount" placeholder="Enter amount" min="1" />
     </div>
     <div>
         <button onclick="deposit()">Deposit</button>
@@ -41,12 +41,12 @@
 
         async function deposit() {
             let amount = document.getElementById('amount').value;
-            if (!amount) return alert('Please enter an amount');
+            if (!amount || amount <= 0) return alert('Please enter a valid positive amount greater than 0');
             
             try {
                 let response = await fetch(`/deposit?amount=${amount}`, { method: 'POST' });
                 let text = await response.text();
-                document.getElementById('result').innerText = text;
+                document.getElementById('result').innerText += text + '\n';
                 fetchBalance();  // обновляем баланс после депозита
             } catch (error) {
                 console.error('Error during deposit:', error);
@@ -55,12 +55,12 @@
 
         async function withdraw() {
             let amount = document.getElementById('amount').value;
-            if (!amount) return alert('Please enter an amount');
+            if (!amount || amount <= 0) return alert('Please enter a valid positive  amount greater than 0');
             
             try {
                 let response = await fetch(`/withdraw?amount=${amount}`, { method: 'POST' });
                 let text = await response.text();
-                document.getElementById('result').innerText = text;
+                document.getElementById('result').innerText += text + '\n';
                 fetchBalance();  // обновляем баланс после снятия
             } catch (error) {
                 console.error('Error during withdraw:', error);
@@ -70,7 +70,7 @@
         // При загрузке страницы загружаем баланс
         window.onload = fetchBalance;
     </script>
+
 </body>
 </html>
-
 
