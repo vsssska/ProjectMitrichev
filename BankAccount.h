@@ -16,6 +16,7 @@ class BankAccount {
 
 		void deposit(double amount);
 		void withdraw(double amount);
+		void waitForFunds(double amount);
 
 		double getBalance() const;
 };
