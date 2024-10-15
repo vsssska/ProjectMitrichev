@@ -18,8 +18,8 @@ jobs:
 
       - name: Install Dependencies
         run: |
-          sudo apt update apt install
-          sudo apt install -y cmake build-essential libdrogon-dev
+          sudo apt update
+          sudo apt update && apt upgrade && apt install -y cmake build-essential libdrogon-dev
 
       - name: Configure and Build
         run: |
@@ -31,4 +31,4 @@ jobs:
       # - name: Run Tests
       #   run: |
       #     cd build
-      #     ./BankAppTests # если у вас есть отдельный файл с тестами
+      #     ./BankAppTests # если есть отдельный файл с тестами
