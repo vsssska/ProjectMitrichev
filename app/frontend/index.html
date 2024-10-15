@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bank Account</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        input, button {
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Bank Account</h1>
+    <div>
+        <strong>Current Balance: </strong><span id="balance">Loading...</span>
+    </div>
+    <div>
+        <input type="number" id="amount" placeholder="Enter amount" />
+    </div>
+    <div>
+        <button onclick="deposit()">Deposit</button>
+        <button onclick="withdraw()">Withdraw</button>
+    </div>
+    <div id="result"></div>
+
+    <script>
+        async function fetchBalance() {
+            try {
+                let response = await fetch('/balance');
+                let text = await response.text();
+                document.getElementById('balance').innerText = text.split(': ')[1];  // извлекаем баланс из ответа
+            } catch (error) {
+                console.error('Error fetching balance:', error);
+            }
+        }
+
+        async function deposit() {
+            let amount = document.getElementById('amount').value;
+            if (!amount) return alert('Please enter an amount');
+            
+            try {
+                let response = await fetch(`/deposit?amount=${amount}`, { method: 'POST' });
+                let text = await response.text();
+                document.getElementById('result').innerText = text;
+                fetchBalance();  // обновляем баланс после депозита
+            } catch (error) {
+                console.error('Error during deposit:', error);
+            }
+        }
+
+        async function withdraw() {
+            let amount = document.getElementById('amount').value;
+            if (!amount) return alert('Please enter an amount');
+            
+            try {
+                let response = await fetch(`/withdraw?amount=${amount}`, { method: 'POST' });
+                let text = await response.text();
+                document.getElementById('result').innerText = text;
+                fetchBalance();  // обновляем баланс после снятия
+            } catch (error) {
+                console.error('Error during withdraw:', error);
+            }
+        }
+
+        // При загрузке страницы загружаем баланс
+        window.onload = fetchBalance;
+    </script>
+</body>
+</html>
+
+
