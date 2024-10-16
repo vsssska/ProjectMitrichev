@@ -36,6 +36,10 @@ jobs:
           done
           echo "Service did not start in time" && exit 1
 
+      # Запуск тестов
+      - name: Run tests
+        run: docker exec -it app-app-1 /bin/bash -c "cd ./build && ctest"
+
       # Остановка и удаление контейнера после теста
       - name: Stop and remove Docker Container
         if: always()
