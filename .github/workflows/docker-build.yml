@@ -38,7 +38,7 @@ jobs:
 
       # Запуск тестов
       - name: Run tests
-        run: docker exec -it app-app-1 /bin/bash -c "cd ./build && ctest"
+        run: docker exec -it myapp /bin/bash -c "cd ./build && ctest"
 
       # Остановка и удаление контейнера после теста
       - name: Stop and remove Docker Container
